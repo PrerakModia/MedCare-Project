@@ -1,0 +1,279 @@
+import 'package:expandable/expandable.dart';
+import 'package:flutter/material.dart';
+import '../data/patient_data.dart';
+
+class PersonalDetails extends StatelessWidget {
+  final int index;
+  const PersonalDetails(this.index, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(color: Colors.white),
+      child: Column(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            decoration: const BoxDecoration(color: Colors.white),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.only(left: 10, bottom: 3),
+                  child: Text(
+                    '${dummy[index].firstName} ${dummy[index].lastName}',
+                    style: const TextStyle(fontSize: 27, color: Colors.red),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    '${dummy[index].dateofBirth[1]} ${dummy[index].dateofBirth[2]} ${dummy[index].dateofBirth[3]} (${dummy[index].age})',
+                    style: const TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 18,
+                        color: Colors.black54),
+                  ),
+                )
+              ],
+            ),
+          ),
+          const Divider(thickness: 2, height: 2),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Text(
+                      'Organ donor',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      dummy[index].organDonor,
+                      style:
+                          const TextStyle(color: Colors.black54, fontSize: 18),
+                    ),
+                  ),
+                ]),
+          ),
+          const Divider(thickness: 2, height: 2),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Text(
+                      'BloodType',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      dummy[index].bloodType,
+                      style:
+                          const TextStyle(color: Colors.black54, fontSize: 18),
+                    ),
+                  ),
+                ]),
+          ),
+          const Divider(thickness: 2, height: 2),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Text(
+                      'Height',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      dummy[index].height,
+                      style:
+                          const TextStyle(color: Colors.black54, fontSize: 18),
+                    ),
+                  ),
+                ]),
+          ),
+          const Divider(thickness: 2, height: 2),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Text(
+                      'Weight',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      dummy[index].weight,
+                      style:
+                          const TextStyle(color: Colors.black54, fontSize: 18),
+                    ),
+                  ),
+                ]),
+          ),
+          const Divider(thickness: 2, height: 2),
+          ExpandablePanel(
+            theme: const ExpandableThemeData(
+              headerAlignment: ExpandablePanelHeaderAlignment.center,
+              hasIcon: false,
+            ),
+            header: Expandable(
+              collapsed: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: const Text(
+                          'Address',
+                          style: TextStyle(fontSize: 22),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Text(
+                          '${dummy[index].address[10]}, ${dummy[index].address[100]}',
+                          style: const TextStyle(
+                              color: Colors.black54, fontSize: 18),
+                        ),
+                      ),
+                    ]),
+              ),
+              expanded: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: const Text(
+                          'Address',
+                          style: TextStyle(fontSize: 22),
+                        ),
+                      ),
+                    ]),
+              ),
+            ),
+            expanded: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  for (int i = 1; i <= 4; i++)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 5, left: 10),
+                      child: Text(
+                        dummy[index].address[i] as String,
+                        style: const TextStyle(
+                            fontSize: 18, color: Colors.black54),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            collapsed: Container(),
+          ),
+          const Divider(thickness: 2, height: 2),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Text(
+                      'Phone Number',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      dummy[index].mobileNumber,
+                      style:
+                          const TextStyle(color: Colors.black54, fontSize: 18),
+                    ),
+                  ),
+                ]),
+          ),
+          const Divider(thickness: 2, height: 2),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Text(
+                      'Email',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      dummy[index].emailAdd,
+                      style:
+                          const TextStyle(color: Colors.black54, fontSize: 18),
+                    ),
+                  ),
+                ]),
+          ),
+          const Divider(thickness: 2, height: 2),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: const Text(
+                      'Occupation',
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      dummy[index].occupation,
+                      style:
+                          const TextStyle(color: Colors.black54, fontSize: 18),
+                    ),
+                  ),
+                ]),
+          ),
+          const Divider(thickness: 2, height: 2),
+        ],
+      ),
+    );
+  }
+}

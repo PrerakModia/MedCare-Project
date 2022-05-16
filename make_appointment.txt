@@ -1,0 +1,418 @@
+import 'package:appointment_app/data/appointment_data.dart';
+import 'package:appointment_app/data/doctor_data.dart';
+import 'package:appointment_app/models/appointment_model.dart';
+
+import '../data/timeData.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+class MakeAppointment extends StatefulWidget {
+  static const routeName = '/make-appointment';
+  const MakeAppointment({Key? key}) : super(key: key);
+
+  @override
+  State<MakeAppointment> createState() => _MakeAppointmentState();
+}
+
+class _MakeAppointmentState extends State<MakeAppointment> {
+  String text = 'No Date Chosen';
+  String timeText = 'No Time Chosen';
+  String doctorName = 'No Doctor Chosen';
+  String patientID = 'No ID Entered';
+  final idController = TextEditingController();
+  String symptoms = 'Enter your Symptoms';
+  final symController1 = TextEditingController();
+  final symController2 = TextEditingController();
+  final symController3 = TextEditingController();
+  List<String> symp = ['', '', ''];
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime.now(),
+        lastDate: DateTime.now().add(const Duration(days: 7)));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        text = DateFormat('dd-MM-yy').format(picked);
+      });
+    }
+  }
+
+  void _selectTime() {
+    showModalBottomSheet(
+        context: context,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            child: GridView(
+              padding: const EdgeInsets.all(5),
+              children: <Widget>[
+                ...dummyTime.map((dummyData) {
+                  return ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        timeText = dummyData;
+                        Navigator.of(context).pop();
+                      });
+                    },
+                    child: Center(
+                      child: Text(dummyData),
+                    ),
+                  );
+                })
+              ],
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 5.0,
+                mainAxisSpacing: 5.0,
+                mainAxisExtent: 40,
+              ),
+            ),
+            behavior: HitTestBehavior.opaque,
+          );
+        });
+  }
+
+  void _selectDoctor() {
+    showModalBottomSheet(
+        context: context,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                crossAxisSpacing: 5.0,
+                mainAxisSpacing: 10.0,
+                mainAxisExtent: 40,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      doctorName = dummy_doctor[index].name;
+                      Navigator.of(context).pop();
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 5,
+                      left: 10,
+                      right: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          dummy_doctor[index].name,
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                        Text(
+                          dummy_doctor[index].speciality,
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+              itemCount: dummy_doctor.length,
+            ),
+            behavior: HitTestBehavior.opaque,
+          );
+        });
+  }
+
+  void _selectID() {
+    final enteredID = idController.text;
+    setState(() {
+      patientID = enteredID;
+      Navigator.of(context).pop();
+    });
+  }
+
+  void _enterSymptoms() {
+    setState(() {
+      String s1 = symController1.text;
+      String s2 = symController2.text;
+      String s3 = symController3.text;
+      if (s1.isEmpty == false) symp[0] = s1;
+      if (s2.isEmpty == false) symp[1] = s2;
+      if (s3.isEmpty == false) symp[2] = s3;
+      symptoms = 'Edit your Symptoms';
+      Navigator.of(context).pop();
+    });
+  }
+
+  void _addAppointment() {
+    final newAppoint = Appointment(
+        docName: doctorName,
+        patientId: patientID,
+        date: text,
+        time: timeText,
+        symptom: [
+          symController1.text,
+          symController2.text,
+          symController3.text
+        ]);
+    setState(() {
+      dummy_appointment_data.add(newAppoint);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Center(child: Text('Make appointment'))),
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height -
+              MediaQuery.of(context).padding.top -
+              AppBar().preferredSize.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        SizedBox(
+                          child: const Text(
+                            'Select Doctor',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          width: MediaQuery.of(context).size.width * .65 / 2,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * .65 / 2,
+                          height: 40,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _selectDoctor();
+                            },
+                            child: FittedBox(
+                              child: Text(
+                                doctorName,
+                                style: const TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        SizedBox(
+                          child: const Text(
+                            'Enter ID',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          width: MediaQuery.of(context).size.width * .65 / 2,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * .65 / 2,
+                          height: 40,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    return Dialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: Container(
+                                        height: 150,
+                                        padding: const EdgeInsets.all(10),
+                                        child: Column(children: <Widget>[
+                                          TextField(
+                                            decoration: const InputDecoration(
+                                                labelText: 'Enter ID'),
+                                            controller: idController,
+                                            onSubmitted: (_) {
+                                              _selectID();
+                                            },
+                                          ),
+                                          const SizedBox(height: 10),
+                                          ElevatedButton(
+                                              onPressed: () {
+                                                _selectID();
+                                              },
+                                              child: const Text('Done'))
+                                        ]),
+                                      ),
+                                    );
+                                  });
+                            },
+                            child: FittedBox(
+                              child: Text(
+                                patientID,
+                                style: const TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                child: const Text(
+                  'Date',
+                  style: TextStyle(fontSize: 20),
+                ),
+                width: MediaQuery.of(context).size.width * .65,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .65,
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _selectDate(context);
+                  },
+                  child: FittedBox(
+                    child: Text(
+                      text,
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                child: const Text(
+                  'Time',
+                  style: TextStyle(fontSize: 20),
+                ),
+                width: MediaQuery.of(context).size.width * .65,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .65,
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _selectTime();
+                  },
+                  child: FittedBox(
+                    child: Text(
+                      timeText,
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                child: const Text(
+                  'Symptoms',
+                  style: TextStyle(fontSize: 20),
+                ),
+                width: MediaQuery.of(context).size.width * .65,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .65,
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (_) {
+                          return Dialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Container(
+                              height: 300,
+                              padding: const EdgeInsets.all(10),
+                              child: Column(children: <Widget>[
+                                TextField(
+                                  decoration: const InputDecoration(
+                                      labelText: 'Symptom 1'),
+                                  controller: symController1,
+                                  onSubmitted: (_) {},
+                                ),
+                                TextField(
+                                  decoration: const InputDecoration(
+                                      labelText: 'Symptom 2'),
+                                  controller: symController2,
+                                  onSubmitted: (_) {},
+                                ),
+                                TextField(
+                                  decoration: const InputDecoration(
+                                      labelText: 'Symptom 3'),
+                                  controller: symController3,
+                                  onSubmitted: (_) {},
+                                ),
+                                const SizedBox(height: 10),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      _enterSymptoms();
+                                    },
+                                    child: const Text('Done'))
+                              ]),
+                            ),
+                          );
+                        });
+                  },
+                  child: FittedBox(
+                    child: Text(
+                      symptoms,
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .65,
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _addAppointment();
+                    showDialog(
+                        context: context,
+                        builder: (_) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pop();
+                            },
+                            behavior: HitTestBehavior.opaque,
+                            child: Dialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Container(
+                                  height: 50,
+                                  padding: const EdgeInsets.all(10),
+                                  child: const Center(
+                                      child: Text(
+                                    'Appointment Made',
+                                    style: TextStyle(fontSize: 18),
+                                  ))),
+                            ),
+                          );
+                        });
+                  },
+                  child: const FittedBox(
+                    child: Text(
+                      'Make Appointment',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

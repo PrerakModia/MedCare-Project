@@ -1,0 +1,86 @@
+import 'package:flutter/material.dart';
+import '../patient_data.dart';
+
+class EmergencyDetails extends StatelessWidget {
+  final int index;
+  const EmergencyDetails(this.index, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: const EdgeInsets.all(10),
+          child: const Text(
+            'Emergency Contact Details',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+        ),
+        Row(
+          children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.only(top: 10, left: 10),
+              child: Text(
+                'Name: ',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                dummy[index].emergencyName,
+                style: const TextStyle(fontSize: 18),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.only(top: 10, left: 10, bottom: 10),
+              child: Text(
+                'Phone Number: ',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              child: Text(
+                dummy[index].emergencyNumber,
+                style: const TextStyle(fontSize: 18),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          width: double.infinity,
+          //  padding: const EdgeInsets.all(10),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: const Text(
+                  'Address: ',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    for (int i = 1; i <= 4; i++)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: Text(
+                          dummy[index].emergencyAdd[i] as String,
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      ),
+                  ])
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
