@@ -13,12 +13,16 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  List<String> _values = ['Doctor', 'Patient', 'Pharmacist']; // Option 2
+  final List<String> _values = ['Doctor', 'Patient', 'Pharmacist']; // Option 2
   String? _selectedvalue;
   final GlobalKey<FormState> _formkey = GlobalKey();
   final _passwordController = TextEditingController();
   var _isLoading = false;
-  Map<String, String> _authData = {'email': '', 'password': '', 'usertype': ''};
+  final Map<String, String> _authData = {
+    'email': '',
+    'password': '',
+    'usertype': ''
+  };
 
   Future<void> _submit() async {
     //print('11111');
@@ -56,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           height: MediaQuery.of(context).size.height -
               (MediaQuery.of(context).padding.top + 100),
           child: Column(children: [
@@ -97,6 +101,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             if (value!.isEmpty || !value.contains('@')) {
                               return 'Invalid Email';
                             }
+                            return null;
                           },
                           onSaved: (value) {
                             _authData['email'] = value.toString();
@@ -127,6 +132,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             if (value!.isEmpty || value.length < 6) {
                               return 'Password is too short';
                             }
+                            return null;
                           },
                           onSaved: (value) {
                             _authData['password'] = value.toString();
@@ -156,6 +162,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             if (value != _passwordController.text) {
                               return 'Passwords do not match!';
                             }
+                            return null;
                           },
                         ),
                       ),
@@ -181,7 +188,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 IconData(0xf82b, fontFamily: 'MaterialIcons'),
                                 size: 35,
                               ),
-                              hint: Container(
+                              hint: SizedBox(
                                 width: 300,
                                 child: const Text('Select One'),
                               ),
@@ -208,7 +215,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       padding: EdgeInsets.symmetric(
                           horizontal:
                               (MediaQuery.of(context).size.width - 343) / 2),
-                      child: Container(
+                      child: SizedBox(
                         width: double.infinity,
                         height: 52,
                         child: TextButton(

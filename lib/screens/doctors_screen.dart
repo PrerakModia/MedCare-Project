@@ -48,12 +48,12 @@ class _DoctorScreenState extends State<DoctorScreen> {
                         Text(availableAppointments[index].time),
                       ]),
                   subtitle: Container(
-                      margin: EdgeInsets.all(15),
+                      margin: const EdgeInsets.all(15),
                       width: double.infinity,
                       child: Center(
                           child: Text(
                         availableAppointments[index].symptom,
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ))),
                 ),
               ),
@@ -75,7 +75,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                                 availableAppointments[index].patientId)));
                   },
                   label: "Profile",
-                  backgroundColor: Color(0xFF7BC043),
+                  backgroundColor: const Color(0xFF7BC043),
                   foregroundColor: Colors.white,
                   icon: const IconData(0xf522, fontFamily: 'MaterialIcons'),
                 ),
@@ -84,7 +84,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                     Provider.of<Appointments>(context).deleteAppointment(index);
                     setState(() {});
                   },
-                  backgroundColor: Color(0xFF0392CF),
+                  backgroundColor: const Color(0xFF0392CF),
                   foregroundColor: Colors.white,
                   label: "Done",
                   icon: const IconData(0xf6d4, fontFamily: 'MaterialIcons'),

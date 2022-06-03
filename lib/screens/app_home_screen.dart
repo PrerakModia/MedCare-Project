@@ -17,14 +17,14 @@ class AppHomeScreen extends StatelessWidget {
                   image: AssetImage('images/1.png'), fit: BoxFit.fitHeight)),
           child: Image.asset('images/screen-0.png'),
         ),
-        Container(
+        SizedBox(
           height: MediaQuery.of(context).size.height * 0.2,
           child: Row(
             children: <Widget>[
               Container(width: MediaQuery.of(context).size.width * 0.1),
               Container(
                 height: 50,
-                padding: EdgeInsets.only(right: 5),
+                padding: const EdgeInsets.only(right: 5),
                 width: MediaQuery.of(context).size.width * 0.4,
                 child: ElevatedButton(
                   onPressed: () {
@@ -38,14 +38,14 @@ class AppHomeScreen extends StatelessWidget {
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(6.0),
-                              side: BorderSide(color: Colors.black))),
+                              side: const BorderSide(color: Colors.black))),
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.white)),
                 ),
               ),
               Container(
                 height: 50,
-                padding: EdgeInsets.only(left: 5),
+                padding: const EdgeInsets.only(left: 5),
                 width: MediaQuery.of(context).size.width * 0.4,
                 child: ElevatedButton(
                   onPressed: () {
@@ -59,7 +59,7 @@ class AppHomeScreen extends StatelessWidget {
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(6.0),
-                              side: BorderSide(color: Colors.black))),
+                              side: const BorderSide(color: Colors.black))),
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.black)),
                 ),

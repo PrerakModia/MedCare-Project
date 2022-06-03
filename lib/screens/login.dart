@@ -13,10 +13,14 @@ class LogInScreen extends StatefulWidget {
 
 class _LogInScreenState extends State<LogInScreen> {
   final GlobalKey<FormState> _formkey = GlobalKey();
-  List<String> _values = ['Doctor', 'Patient', 'Pharmacist'];
+  final List<String> _values = ['Doctor', 'Patient', 'Pharmacist'];
   final _passwordController = TextEditingController();
   var _isLoading = false;
-  Map<String, String> _authData = {'email': '', 'password': '', 'usertype': ''};
+  final Map<String, String> _authData = {
+    'email': '',
+    'password': '',
+    'usertype': ''
+  };
 
   Future<void> _submit() async {
     if (!_formkey.currentState!.validate()) return;
@@ -55,7 +59,7 @@ class _LogInScreenState extends State<LogInScreen> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           height: MediaQuery.of(context).size.height -
               (MediaQuery.of(context).padding.top + 100),
           child: Column(children: [
@@ -96,6 +100,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             if (value!.isEmpty || !value.contains('@')) {
                               return 'Invalid Email';
                             }
+                            return null;
                           },
                           onSaved: (value) {
                             _authData['email'] = value.toString();
@@ -126,6 +131,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             if (value!.isEmpty || value.length < 6) {
                               return 'Password is too short!';
                             }
+                            return null;
                           },
                           onSaved: (value) {
                             _authData['password'] = value.toString();
@@ -135,13 +141,13 @@ class _LogInScreenState extends State<LogInScreen> {
                     ),
                     const SizedBox(height: 35),
                     if (_isLoading)
-                      CircularProgressIndicator()
+                      const CircularProgressIndicator()
                     else
                       Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal:
                                 (MediaQuery.of(context).size.width - 343) / 2),
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 52,
                           child: TextButton(

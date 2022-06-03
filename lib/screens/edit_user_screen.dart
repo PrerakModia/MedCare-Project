@@ -71,7 +71,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
         lastDate: DateTime.now());
     if (picked != null && picked != DateTime.now()) {
       setState(() {
-        selectDate..text = DateFormat('dd-MM-yy').format(picked);
+        selectDate.text = DateFormat('dd-MM-yy').format(picked);
       });
     }
   }
@@ -219,7 +219,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
                       onPressed: () {
                         _saveForm(patient);
                       },
-                      icon: Icon(Icons.save),
+                      icon: const Icon(Icons.save),
                     ),
                   )
                 ]),
@@ -308,7 +308,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextFormField(
                           initialValue: patient.city,
@@ -319,7 +319,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
                           },
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextFormField(
                           initialValue: patient.state,
@@ -387,7 +387,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextFormField(
                           initialValue: patient.emergencyCity,
@@ -398,7 +398,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
                           },
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: TextFormField(
                           initialValue: patient.emergencyState,

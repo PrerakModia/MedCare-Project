@@ -94,7 +94,7 @@ class _MakeAppointmentState extends State<MakeAppointment> {
                 },
                 child: Dialog(
                   backgroundColor: Colors.transparent,
-                  insetPadding: EdgeInsets.all(10),
+                  insetPadding: const EdgeInsets.all(10),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                   child: ListView.builder(

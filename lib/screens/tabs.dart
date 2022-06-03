@@ -34,44 +34,43 @@ class _TabsScreenState extends State<TabsScreen> {
           backgroundColor: Colors.white,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(30.0),
-            child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Image.asset(
-                      'images/screen-0.png',
-                      height: 50,
-                      width: 70,
-                      //fit: BoxFit.,
-                    ),
-                  ),
-                  Container(
-                    width: 240,
-                    alignment: Alignment.bottomLeft,
-                    height: 50,
-                    padding: const EdgeInsets.only(bottom: 3),
-                    child: const Text(
-                      'Medical Profile',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Container(
-                    height: 37,
-                    width: MediaQuery.of(context).size.width - 310,
-                    alignment: const Alignment(1.0, 1.0),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed(EditUserScreen.routeName);
-                      },
-                      icon: Icon(IconData(0xe21a, fontFamily: 'MaterialIcons')),
-                    ),
-                  )
-                ]),
+            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: <
+                Widget>[
+              Container(
+                padding: const EdgeInsets.only(bottom: 5),
+                child: Image.asset(
+                  'images/screen-0.png',
+                  height: 50,
+                  width: 70,
+                  //fit: BoxFit.,
+                ),
+              ),
+              Container(
+                width: 240,
+                alignment: Alignment.bottomLeft,
+                height: 50,
+                padding: const EdgeInsets.only(bottom: 3),
+                child: const Text(
+                  'Medical Profile',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 37,
+                width: MediaQuery.of(context).size.width - 310,
+                alignment: const Alignment(1.0, 1.0),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(EditUserScreen.routeName);
+                  },
+                  icon:
+                      const Icon(IconData(0xe21a, fontFamily: 'MaterialIcons')),
+                ),
+              )
+            ]),
           ),
         ),
       ),
