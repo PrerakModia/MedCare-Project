@@ -76,7 +76,7 @@ class Auth with ChangeNotifier {
     }
   }
 
-  Future<void> _authenticate_login(String email, String password) async {
+  Future<void> _authenticateLogin(String email, String password) async {
     // try {
     //   final url = Uri.parse(
     //       'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA8pbUa5w95APGlWDUNzq29FupKrlFHxFI');
@@ -106,7 +106,7 @@ class Auth with ChangeNotifier {
   }
 
   Future<void> login(String email, String password) async {
-    return _authenticate_login(email, password);
+    return _authenticateLogin(email, password);
   }
 
   // Future<bool> tryAutoLogin() async {
