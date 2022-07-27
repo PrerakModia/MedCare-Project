@@ -41,6 +41,7 @@ dependencies:
   flutter_slidable: ^1.2.0
   google_fonts: ^2.3.2
   http: ^0.13.4
+  jwt_decoder: ^2.0.1
 
 dev_dependencies:
   flutter_test:

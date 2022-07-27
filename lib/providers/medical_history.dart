@@ -96,8 +96,8 @@ class Medical with ChangeNotifier {
     final filterString = 'orderBy="creator"&equalTo="$userID"';
     final uri = Uri.parse(
         'https://medcare-98a4c-default-rtdb.asia-southeast1.firebasedatabase.app/patients.json?auth=$authToken&$filterString');
-    final Response = await http.get(uri);
-    final extractedData = json.decode(Response.body) as Map<String, dynamic>;
+    final response = await http.get(uri);
+    final extractedData = json.decode(response.body) as Map<String, dynamic>;
     final List<MedicalHistory> loadedData = [];
     extractedData.forEach((key, value) {
       loadedData.add(MedicalHistory(id: '', everHad: {

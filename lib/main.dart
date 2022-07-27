@@ -22,6 +22,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
@@ -66,8 +67,8 @@ class MyApp extends StatelessWidget {
                   //print('Future Builder Accessed');
                   return authResultSnapshot.connectionState ==
                           ConnectionState.waiting
-                      ? SplashScreen()
-                      : AppHomeScreen();
+                      ? const SplashScreen()
+                      : const AppHomeScreen();
                 }),
           routes: {
             //  '/': (context) => const AppHomeScreen(),
