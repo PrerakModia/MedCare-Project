@@ -1,0 +1,63 @@
+Thank you arnav for introducing Kotlin's basic concepts and how Kotlin can be used on server side.
+
+Hello everyone, I am Prerak Modia, currently an Intern at wells fargo. I will be explaining Kotlin's feature of handling asynchronous tasks differently compared to Java. Coroutines.
+
+Before getting into how Kotlin handles asynchronous tasks, I will shortly explain how Java threads execute multiple tasks concurrently.
+
+by implementing thread class or runnable interface, we can create a new thread to run a task parallely. New stack is created for each thread. State of that particular thread is maintained by JVM and execution and handling them are carried out by operating system.
+
+Now moving on to Kotlin Coroutines, it is powerful feature to handling async programming. They allow you to write async code which looks synchronous, which looks clear and concise making it easy to read. Coroutines are light weight threads. What I mean by lightweight is that in Java threads are executed by OS. When a particular thread is to be freed up, context switch needs to occur which is quite expensive. Stack is saved by JVM and thread is freed up by OS. Schedular loads the state of another thread which is to be executed. This process is resource intensive.
+
+In comparison, Kotlin Coroutines use cooperative multitasking, which allows them to be suspended and resumed without a context switch. When a coroutine is suspended, its state is saved in memory, and control is returned to the caller. When the coroutine is resumed, its state is restored, and it continues executing from where it left off.
+
+1. Concurrency model: Java threads use a preemptive concurrency model, which means that the operating system scheduler determines when to switch between threads. In contrast, coroutines use a cooperative concurrency model, which means that coroutines must explicitly yield control to other coroutines.
+2. Synchronization: Java threads use locks, semaphores, and other synchronization primitives to coordinate access to shared resources. Coroutines use suspending functions, which can be thought of as cooperative synchronization, to avoid race conditions and other concurrency-related issues.
+3. Exception handling: Java threads use traditional try-catch blocks for exception handling, which can be difficult to manage in complex concurrent programs. Coroutines, on the other hand, use structured concurrency, which provides a way to manage exceptions and ensure that resources are properly cleaned up when coroutines terminate.
+
+This makes coroutines more lightweight and efficient than threads, as they can be paused and resumed without the need for expensive context switches.
+
+Additionally, coroutines provide a simpler and more intuitive programming model than threads. Coroutines are launched within a specific scope, and their lifecycle is automatically managed by the framework. 
+
+all child coroutines are also canceled, freeing up resources. This makes it easier to manage resources and avoid resource leaks, which can be a problem with thread-based programming.
+
+
+https://developer.android.com/topic/libraries/view-binding/migration
+https://developer.android.com/kotlin/coroutines
+https://developer.android.com/kotlin/coroutines/coroutines-adv
+
+
+
+
+Anko is a Kotlin library for Android development that provides a range of useful utilities and classes to help simplify common tasks and streamline the development process. Here are some advanced topics related to Anko that you might find useful:
+
+DSL for Layouts: Anko provides a DSL (Domain-Specific Language) for creating layouts in code. This DSL allows developers to define the layout hierarchy and properties using a more concise and intuitive syntax than the traditional XML layout files. For example, instead of XML tags like <TextView>, <LinearLayout>, etc., developers can use functions like textView, verticalLayout, etc. to define the views and layout properties in code. Anko's layout DSL can help reduce the amount of boilerplate code required for layout creation and make layout code easier to read and maintain.
+
+SQLite database support: Anko provides a set of classes for working with SQLite databases in Android. These classes provide a simplified API for creating, querying, and updating databases, and use Kotlin coroutines to make database operations asynchronous and non-blocking. Anko's SQLite classes can help reduce the amount of code required to work with databases and simplify the process of implementing data persistence in an Android app.
+
+Dialogs and Toasts: Anko provides a range of classes and functions for creating and displaying dialogs and toasts in Android. These utilities allow developers to create dialogs and toasts with minimal code and provide a range of customization options for appearance and behavior. For example, Anko provides functions like alert() and toast() that allow developers to create dialogs and toasts with a single line of code.
+
+Intents and Activities: Anko provides a set of classes and functions for working with Android intents and activities. These utilities allow developers to create and launch intents and activities with minimal code and provide a range of customization options for intent data and flags. For example, Anko provides functions like browse() and makeCall() that allow developers to create and launch intents for browsing web pages and making phone calls.
+
+Coroutines support: Anko provides support for Kotlin coroutines, allowing developers to use coroutines to make asynchronous and non-blocking calls in Android. Anko's coroutines utilities provide a range of functions and classes for working with coroutines, including launching coroutines on the UI thread, suspending coroutines during long-running operations, and handling errors and exceptions in coroutines.
+
+Overall, Anko is a powerful library for Android development with Kotlin that provides a range of utilities and classes to simplify common tasks and streamline the development process. By using Anko, developers can reduce the amount of boilerplate code required for common tasks and focus more on implementing the core features of their app.
+
+
+
+Kotlin-React is a Kotlin library for building web applications using React, a popular JavaScript library for building user interfaces. Kotlin-React allows developers to write React components in Kotlin code, using a type-safe and expressive syntax that is easier to read and maintain than traditional JavaScript.
+
+Kotlin-React provides a set of APIs for working with React components, including functions for creating components, defining props and state, and handling events. The library also provides a set of utility functions and classes for working with React elements, JSX syntax, and other React-related concepts.
+
+Here are some key benefits of using Kotlin-React for web development:
+
+Type safety: Kotlin-React provides type-safe APIs for working with React components and props, making it easier to catch errors and bugs at compile-time. By using Kotlin's static typing and type inference features, developers can reduce the amount of boilerplate code required for common tasks and make their code more readable and maintainable.
+
+Expressive syntax: Kotlin-React's DSL (Domain-Specific Language) syntax allows developers to define React components in a more expressive and concise way than traditional JavaScript. This can make it easier to understand the code and reduce the risk of errors and bugs.
+
+Integration with Kotlin ecosystem: Kotlin-React is part of the Kotlin ecosystem and can be used with other Kotlin libraries and tools, such as Ktor (a Kotlin web framework), kotlinx.coroutines (a library for working with coroutines), and more. This can help developers leverage the benefits of Kotlin in all aspects of their web development workflow.
+
+React interoperability: Kotlin-React is fully interoperable with React, which means developers can use existing React components and libraries in their Kotlin-React applications. This can help reduce the learning curve and make it easier to integrate with existing React-based projects.
+
+Performance: Kotlin-React's use of Kotlin's static typing and type inference features can help reduce the amount of generated code and improve performance compared to traditional JavaScript-based React applications.
+
+Overall, Kotlin-React provides a powerful and expressive way to build web applications using React with the benefits of the Kotlin language. By using Kotlin-React, developers can write type-safe, expressive, and efficient code for their web applications, making it easier to build and maintain high-quality web experiences.

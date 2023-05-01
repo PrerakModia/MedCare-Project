@@ -1,0 +1,108 @@
+google - app compat - develop in new android versions and google makes sure in runs in older versions
+
+activity -> Screen
+multiple screen -> multiple activities
+
+provide constraints - otherwise all floating are rendered at top
+
+nullableSomething?. let {
+ // write your code here
+ // for a block of code
+}
+
+
+val name1 = age ?: "Default value" -> Elvis Operator
+
+age!!.lowercase() -> not null assertion -> gives nullpointerexception error if its null
+basically it overrides and runs no matter what
+
+original variable cant be used within the scope again when shadowing
+shadowing can be applied to fields, methods and even classes.
+
+backing field to prevent recursive stack overflow
+
+data class -> constructor has atleast 1 parameter
+user1 == user2 if same content in data class
+
+all classes final by default
+need open for inheritable
+
+Any class inherits from Any class // toString, toHash etc are always available
+
+interface can inherit another interface
+all properties and methods can be override which are inherited from interfaces
+
+abstract class can't be instantiated
+abstract class = interface + hold state + fields + constructors
+
+collection - primitive data types
+collection of - non primitive data types
+
+immutable:
+list, set and Map
+
+mutable:
+mutable list/set/map
+
+
+1. Constraint Layout
+2. sp - scalable pixels
+
+
+
+
+Sure! Here are some deeper level topics related to Kotlin/JS that you might be interested in learning more about:
+
+Dynamic Type Interop: Kotlin/JS provides a way to interact with JavaScript code that uses dynamic types, which can be challenging to handle in a statically typed language. This involves using special type annotations and conversion functions to bridge the gap between Kotlin's static typing and JavaScript's dynamic typing.
+
+JavaScript Interop Libraries: While Kotlin/JS provides some built-in support for interacting with JavaScript code, there are also many third-party libraries that can help simplify this process. Some popular interop libraries include kotlinx-serialization, which provides support for serializing Kotlin objects to and from JSON, and kotlin-react, which provides a Kotlin wrapper for the React.js library.
+
+WebAssembly: Kotlin/JS can also be used to generate WebAssembly (WASM) code, which is a binary format that can be executed in a web browser without the need for a JavaScript engine. This can provide improved performance and security compared to traditional JavaScript code.
+
+Multiplatform Projects: Kotlin's multiplatform support allows developers to write code that can be shared between different platforms, including Android, iOS, and the web. This can be useful for building applications that need to run on multiple platforms or for sharing code between different parts of a larger system.
+
+Testing and Debugging: Like any programming language, Kotlin/JS provides tools for testing and debugging code. Some popular testing frameworks include kotlinx-test, which provides a Kotlin API for writing tests, and JEST, which is a popular JavaScript testing framework that can be used with Kotlin/JS projects. The Kotlin/JS debugger can also be used to step through code and diagnose issues at runtime.
+
+These are just a few examples of the deeper level topics related to Kotlin/JS. Depending on your specific interests and needs, there may be other areas of the language that you want to explore in more depth, such as build tooling, performance optimization, or advanced language features.
+
+
+
+
+
+User
+give some more topics
+ChatGPT
+Sure, here are some more topics related to Kotlin/JS:
+
+Functional Programming: Kotlin/JS provides support for functional programming techniques such as lambda expressions, higher-order functions, and immutable data structures. Functional programming can help make code more concise and easier to reason about, which can be particularly useful in complex applications.
+
+Reactive Programming: Kotlin/JS supports reactive programming techniques such as RxKotlin and Kotlin Flow, which allow developers to build applications that react to changes in data over time. This can be particularly useful in applications that need to handle real-time data streams, such as chat applications or financial trading platforms.
+
+Web Frameworks: There are several web frameworks available for Kotlin/JS, including Ktor, Spring WebFlux, and Vert.x. These frameworks provide a set of tools and conventions for building web applications in Kotlin/JS, such as routing, handling HTTP requests, and handling data serialization.
+
+Build Tools: Kotlin/JS can be built using a variety of different build tools, including Gradle, Maven, and Bazel. These tools provide a way to manage dependencies, compile code, and package applications for deployment.
+
+Performance Optimization: Kotlin/JS provides a number of features that can help optimize the performance of web applications, such as inline functions, tail recursion optimization, and code splitting. Developers can also use profiling tools to identify bottlenecks and optimize performance at runtime.
+
+Security: Like any web application, Kotlin/JS applications need to be secure. This can involve measures such as preventing cross-site scripting (XSS) attacks, protecting sensitive data, and using encryption to secure network traffic.
+
+These are just a few more examples of topics related to Kotlin/JS that you might be interested in exploring. Depending on your interests and needs, there may be other areas of the language that you want to dive into further.
+
+
+
+Sure, here are some even deeper level topics related to Kotlin/JS, along with detailed explanations about them:
+
+Coroutines: Kotlin/JS provides support for coroutines, which are a powerful concurrency feature that allow developers to write asynchronous code that looks synchronous. Coroutines can be used to simplify complex asynchronous operations, such as network requests or database queries, by allowing developers to write code that appears to execute sequentially even when it is actually executing concurrently.
+Coroutines in Kotlin/JS are based on JavaScript Promises, which are a built-in JavaScript feature for handling asynchronous operations. Kotlin's coroutines API provides a way to write code that interacts with Promises using a more concise and intuitive syntax.
+
+Code Generation: Kotlin/JS uses a technique called code generation to transform Kotlin code into JavaScript code. This involves taking the Kotlin code and generating equivalent JavaScript code that can be executed in a web browser. Code generation allows Kotlin/JS to provide a high degree of compatibility with existing JavaScript libraries and frameworks, while still providing the benefits of static typing and other language features.
+
+Type Safety: One of the main advantages of using Kotlin/JS is its strong type safety. Kotlin is a statically typed language, which means that type errors are caught at compile time rather than at runtime. This can help catch errors early in the development process, before they have a chance to cause problems in production.
+
+In addition to static typing, Kotlin/JS also provides other features that contribute to type safety, such as null safety and type inference. Null safety ensures that null pointer exceptions are caught at compile time, while type inference allows the compiler to deduce the types of variables and expressions without requiring developers to explicitly specify them.
+
+Gradle Kotlin DSL: Gradle is a popular build tool that is widely used in the Kotlin/JS ecosystem. Kotlin/JS provides a DSL (domain-specific language) for configuring Gradle builds using Kotlin syntax. This can make build configuration more concise and easier to read, while also providing access to the full power of the Kotlin language.
+The Gradle Kotlin DSL can be used to configure tasks, dependencies, and plugins in a build, as well as to define custom build logic using Kotlin code. The DSL can also be used to access other features of Gradle, such as its built-in caching and incremental build support.
+
+JavaScript Bundling: When building a web application with Kotlin/JS, it's common to use a bundler such as Webpack or Rollup to package the application code into a single JavaScript file that can be served to users. Kotlin/JS provides tools for configuring and customizing the bundling process, such as specifying entry points, optimizing output, and enabling source maps.
+JavaScript bundling can have a significant impact on the performance and size of a web application, and it's important to optimize the bundling process to minimize the amount of code that needs to be downloaded by users. Kotlin/JS provides several tools and techniques for optimizing JavaScript output, such as tree shaking, dead code elimination, and code splitting.
